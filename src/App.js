@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import Header from './components/layout/header';
-import Navigation from './components/layout/navigation';
+import Navigation from './components/layout/Pagelayout';
 import About from './components/pages/about';
 import Page1 from './components/pages/page1';
 import Page2 from './components/pages/page2';
@@ -14,7 +13,6 @@ class App extends Component {
   return (
     <Router>
       <div className="App">
-        <Header />
         <Navigation />
         <Route exact path="/" render={props => (
           <React.Fragment>
