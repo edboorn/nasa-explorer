@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
+import Header from './components/layout/header';
+import Navigation from './components/layout/navigation';
+import About from './components/pages/about';
+import Page1 from './components/pages/page1';
+import Page2 from './components/pages/page2';
 
-function App() {
+class App extends Component {
+
+
+  render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Navigation />
+        <Route exact path="/" render={props => (
+          <React.Fragment>
+            <h1>Home Screen</h1>
+          </React.Fragment>
+        )} />
+
+        {/* THis can definitely be improved */}
+        <Route path="/about" component={About} />
+        <Route path="/page1" component={Page1} />
+        <Route path="/page2" component={Page2} />
+      </div>
+    </Router>
   );
+  }
 }
 
 export default App;
