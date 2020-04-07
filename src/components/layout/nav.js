@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/home";
 import About from "../pages/about";
 import ImageSearch from "../pages/imageSearch";
-import Page2 from "../pages/page2";
+import RoverImages from "../pages/roverImages";
 
 export default function Nav() {
   const navStyle = {
@@ -24,8 +24,8 @@ export default function Nav() {
             <Link style={navStyle} to="/imageSearch">
               <li>Image Search</li>
             </Link>
-            <Link style={navStyle} to="/page2">
-              <li>Page 2</li>
+            <Link style={navStyle} to="/roverImages">
+              <li>Rover Images</li>
             </Link>
             <Link style={navStyle} to="/about">
               <li>About</li>
@@ -35,7 +35,7 @@ export default function Nav() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/imageSearch" exact component={ImageSearch} />
-          <Route path="/page2" exact component={Page2} />
+          <Route path="/roverImages" exact component={RoverImages} />
           <Route path="/about" exact component={About} />
         </Switch>
 

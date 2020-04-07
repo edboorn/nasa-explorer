@@ -64,5 +64,13 @@ nav {
   justify-content: space-around;
   background:white;
   align-items: center;
-  min-width: 40% ;
+  min-width: 30% ;
+}
+
+.searchImages {
+  max-width: 60%;
+}
+
+.roverData {
+  float:right;
 }
