@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import ImageRenderer from "../component-library/imageSearchRender";
 import { imageArchiveSearch } from "../../api/index";
 export default function ImageSearch() {
-
-  // Get Todays Year 
+  // Get Todays Year
   let newDate = new Date();
   let year = newDate.getFullYear();
   // Set State
@@ -16,22 +15,20 @@ export default function ImageSearch() {
   const [endYear, setEndYear] = useState(year);
 
   // Query States
-  const [querySearch, setQuerySearch] = useState()
-  const [queryStartYear, setQueryStartYear] = useState()
-  const [queryEndYear, setQueryEndYear] = useState()
+  const [querySearch, setQuerySearch] = useState();
+  const [queryStartYear, setQueryStartYear] = useState();
+  const [queryEndYear, setQueryEndYear] = useState();
 
   useEffect(() => {
     const fetchApi = async () => {
       setImages(await imageArchiveSearch(search, startYear, endYear));
     };
     fetchApi();
-  }, [querySearch, queryStartYear,queryEndYear]);
-
-
+  }, [querySearch, queryStartYear, queryEndYear]);
 
   const updateSearch = (e) => {
-    console.log(search)
-    setSearch(e.target.value)
+    console.log(search);
+    setSearch(e.target.value);
   };
 
   const updateStartDate = (e) => {
@@ -42,47 +39,51 @@ export default function ImageSearch() {
     setEndYear(e.target.value);
   };
 
-  const submitSearch =(e) => {
+  const submitSearch = (e) => {
     e.preventDefault();
     setQuerySearch(search);
     setQueryStartYear(startYear);
     setQueryEndYear(endYear);
-  }
-
+  };
 
   if (images.data === undefined) {
     return <h4> Page is Loading</h4>;
   } else {
     return (
-      <div className="mainPage">
-        <div className="titleText">
-          <h2>Nasa Image Search</h2>
-          <p>Search The Nasa Image Database</p>
+      <>
+        <div className="jumbotron">
+            <h1 className="display-4">Nasa Image Search</h1>
+            <p className="lead">Search The Nasa Image Database</p>
         </div>
-        <form className="search-form" onSubmit={submitSearch}>
-          <input
-            className="search-bar"
-            type="text"
-            value={search}
-            onChange={updateSearch}
-          />
-          <input
-            className="date-search"
-            type="year"
-            defaultValue={startYear}
-            onChange={updateStartDate}
-          />
-          <input
-            className="date-search"
-            type="year"
-            defaultValue={endYear}
-            onChange={updateEndDate}
-          />
-          <button className="search-button" type="submit">
-            Search
-          </button>
-        </form>
-        <div className="images">
+        <div className="row" >
+          <div className="col">
+            <form className="search-form" onSubmit={submitSearch}>
+              <input
+                className="search-bar"
+                type="text"
+                value={search}
+                onChange={updateSearch}
+              />
+              <input
+                className="date-search"
+                type="year"
+                defaultValue={startYear}
+                onChange={updateStartDate}
+              />
+              <input
+                className="date-search"
+                type="year"
+                defaultValue={endYear}
+                onChange={updateEndDate}
+              />
+              <button className="search-button" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <p></p>
+        <div className="row">
           {images.data.collection.items.map((image) => (
             <ImageRenderer
               key={image.data[0].nasa_id}
@@ -93,7 +94,7 @@ export default function ImageSearch() {
             />
           ))}
         </div>
-      </div>
+      </>
     );
   }
 }
