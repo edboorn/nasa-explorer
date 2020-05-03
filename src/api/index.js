@@ -23,9 +23,9 @@ export const imageArchiveSearch = async (textQuery,StartDate,EndDate) => {
     }
 }
 
-export const roverImageSearch = async () => {
+export const roverImageSearch = async (rover, earthDate) => {
     try {
-        const {data} = await axios.get(`${shareAbleUrl}/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=${process.env.REACT_APP_API_KEY}`)
+        const {data} = await axios.get(`${shareAbleUrl}/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${earthDate}&api_key=${process.env.REACT_APP_API_KEY}`)
         return data;
     }
     catch(error) {

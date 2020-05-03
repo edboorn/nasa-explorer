@@ -1,12 +1,18 @@
 import React from "react";
 
-const RoverModal = ({ roverData }) => {
+const RoverModal = ({ roverData, date_created }) => {
 
+  const roverStatusCheck = () => { 
+    if(roverData.status === "active" || roverData.status === "complete") {
+      return <span className="badge badge-pill badge-success"> {roverData.status}</span>
+    }
+  else return <p> {roverData.status}</p>
+  }
   return (
-    <div className="roverData">
-      <p>{roverData.name}</p>
-      <p>{roverData.status}</p>
-
+    <div className="card-body">
+      <h5 className="card-title">{roverData.name}</h5>
+      <p>{roverStatusCheck()}</p>
+      <p>{date_created}</p>
       <table>
         <thead>
           <tr>
