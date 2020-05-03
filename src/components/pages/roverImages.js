@@ -15,7 +15,7 @@ export default function RoverImages() {
       setImages(await roverImageSearch(rover,date));
     };
     fetchAPI();
-  }, [rover]);
+  }, [rover,date]);
   const updateRover = (e) => {
     e.preventDefault();
     setRover(e.target.value);
