@@ -12,7 +12,7 @@ export default function Nav() {
     <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="/covid-explorer">
+          <a className="navbar-brand" href="/nasa-explorer">
             {" "}
             Nasa Explorer{" "}
           </a>
@@ -57,7 +57,7 @@ export default function Nav() {
             exact
             component={RoverImages}
           />
-          <Route path="/nasa-explorer/about" exact component={About} />
+          <Route path="/nasa-explorer/about" component={About} />
         </Switch>
         </div>
       </div>
