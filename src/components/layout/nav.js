@@ -18,25 +18,25 @@ export default function Nav() {
       <nav>
           <h3>Nasa Explorer</h3>
           <ul className="navLinks">
-            <Link style={navStyle} to="/">
+            <Link style={navStyle} to="/nasa-explorer">
               <li>Home</li>
             </Link>
-            <Link style={navStyle} to="/imageSearch">
+            <Link style={navStyle} to="/nasa-explorer/imageSearch">
               <li>Image Search</li>
             </Link>
-            <Link style={navStyle} to="/roverImages">
+            <Link style={navStyle} to="/nasa-explorer/roverImages">
               <li>Rover Images</li>
             </Link>
-            <Link style={navStyle} to="/about">
+            <Link style={navStyle} to="/nasa-explorer/about">
               <li>About</li>
             </Link>
           </ul>
         </nav>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/imageSearch" exact component={ImageSearch} />
-          <Route path="/roverImages" exact component={RoverImages} />
-          <Route path="/about" exact component={About} />
+          <Route path="/nasa-explorer" exact component={Home} />
+          <Route path="/nasa-explorer/imageSearch" exact component={ImageSearch} />
+          <Route path="/nasa-explorer/roverImages" exact component={RoverImages} />
+          <Route path="/nasa-explorer/about" exact component={About} />
         </Switch>
 
       </div>

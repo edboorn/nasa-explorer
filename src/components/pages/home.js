@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from 'react'
+import {imageOfDay} from '../../api/index'
 import ImageRender from '../component-library/image-render';
 
 export default function Home() {
     const [image, setImage] = useState('');
 
     useEffect(() => {
-      fetchLaunchImage();
+      const fetchApi = async () => {
+        setImage(await imageOfDay());
+      }
+      fetchApi();
     }, [])
   
-    const fetchLaunchImage = async () => {
-      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}`);
-      const data = await response.json()
-      setImage(data);
+
+  
+    if(image.imageurl === null ) {
+      return <h3> The Image is loading</h3>
+      
     }
-  
-  
-    return (
+    else {
+      return (
         <div className="mainImage">
         <ImageRender 
         image={image.url}
@@ -24,4 +28,6 @@ export default function Home() {
         date={image.date}/>
     </div>
     );
+    }
+
 }
